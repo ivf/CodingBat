@@ -124,4 +124,32 @@ public class String1 {
         }
     }
 
+    public String lastChars(String a, String b) {
+        char aChar = (a.length() == 0) ? '@' : a.charAt(0);
+        char bChar = (b.length() == 0) ? '@' : b.charAt(b.length()-1);
+        return "" + aChar + bChar;
+    }
+
+    public String conCat(String a, String b) {
+        int aLength = a.length();
+        int bLength = b.length();
+
+        if (aLength == 0 || bLength == 0) {
+            return a + b;
+        } else if (a.charAt(aLength-1) == b.charAt(0)) {
+            return a.substring(0, aLength-1) + b;
+        } else {
+            return a + b;
+        }
+    }
+
+    public String lastTwo(String str) {
+        int strLength = str.length();
+        if (strLength < 2) {
+            return str;
+        } else {
+            return str.substring(0, strLength-2) + str.charAt(strLength-1) + str.charAt(strLength-2);
+        }
+    }
+
 }
