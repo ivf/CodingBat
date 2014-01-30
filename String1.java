@@ -137,7 +137,7 @@ public class String1 {
         if (aLength == 0 || bLength == 0) {
             return a + b;
         } else if (a.charAt(aLength-1) == b.charAt(0)) {
-            return a.substring(0, aLength-1) + b;
+            return a.substring(0, aLength - 1) + b;
         } else {
             return a + b;
         }
@@ -150,6 +150,96 @@ public class String1 {
         } else {
             return str.substring(0, strLength-2) + str.charAt(strLength-1) + str.charAt(strLength-2);
         }
+    }
+
+    public String seeColor(String str) {
+        if (str.startsWith("red")) {
+            return "red";
+        } else if (str.startsWith("blue")) {
+            return "blue";
+        }
+        return "";
+    }
+
+    public boolean frontAgain(String str) {
+        if (str.length() >= 2 && str.endsWith(str.substring(0, 2))) {
+            return true;
+        }
+        return false;
+    }
+
+    public String minCat(String a, String b) {
+        int aLength = a.length();
+        int bLength = b.length();
+        if (aLength == bLength) {
+            return a + b;
+        } else if (aLength > bLength) {
+            return a.substring(aLength-bLength) + b;
+        } else {
+            return a + b.substring(bLength-aLength);
+        }
+    }
+
+    public String extraFront(String str) {
+        if (str.length() <= 2) {
+            return str + str + str;
+        } else {
+            String strSub = str.substring(0, 2);
+            return strSub + strSub + strSub;
+        }
+    }
+
+    public String without2(String str) {
+        int strLength = str.length();
+        if (strLength == 2) {
+            return "";
+        } else if (strLength > 2 && str.endsWith(str.substring(0, 2))) {
+            return str.substring(2);
+        } else {
+            return str;
+        }
+    }
+
+    public String deFront(String str) {
+        StringBuilder sb = new StringBuilder(str);
+        if (sb.length() >= 2) {
+            if (sb.charAt(1) != 'b') {
+                sb.deleteCharAt(1);
+            }
+            if (sb.charAt(0) != 'a') {
+                sb.deleteCharAt(0);
+            }
+        }
+        return sb.toString();
+    }
+
+    public String startWord(String str, String word) {
+        if (str.length() > 0 && str.substring(1).startsWith(word.substring(1))) {
+            return str.substring(0, word.length());
+        } else {
+            return "";
+        }
+    }
+
+    public String withoutX(String str) {
+        if (str.startsWith("x")) {
+            str = str.substring(1);
+        }
+        if (str.endsWith("x")) {
+            str = str.substring(0, str.length()-1);
+        }
+        return str;
+    }
+
+    public String withoutX2(String str) {
+        StringBuilder sb = new StringBuilder(str);
+        if (sb.length() > 1 && sb.charAt(1) == 'x') {
+            sb.deleteCharAt(1);
+        }
+        if (sb.length() > 0 && sb.charAt(0) == 'x') {
+            sb.deleteCharAt(0);
+        }
+        return sb.toString();
     }
 
 }
