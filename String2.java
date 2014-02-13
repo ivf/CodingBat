@@ -91,4 +91,127 @@ public class String2 {
         return result;
     }
 
+    public String repeatEnd(String str, int n) {
+        String result = "";
+        int length = str.length();
+        for (int i = 0; i < n; i++) {
+            result += str.substring(length-n);
+        }
+        return result;
+    }
+
+    public String repeatFront(String str, int n) {
+        String result = "";
+        while (n >= 0) {
+            result += str.substring(0, n--);
+        }
+        return result;
+    }
+
+    public String repeatSeparator(String word, String sep, int count) {
+        String result = "";
+        if (count > 0) result = word;
+        for (int i = 1; i < count; i++) {
+            result += sep + word;
+        }
+        return result;
+    }
+
+    public boolean prefixAgain(String str, int n) {
+        String pref = str.substring(0, n);
+        return str.substring(n).contains(pref);
+    }
+
+    public boolean xyzMiddle(String str) {
+        int first = -1;
+        int end = -1;
+        int difference = 0;
+        int length = str.length();
+        for (int i = 0; i <= length - 3; i++) {
+            if (str.substring(i, i+3).equals("xyz")) {
+                first = i;
+                end = length - i - 3;
+                difference = Math.abs(first - end);
+                if (difference >= 0 && difference <= 1) return true;
+            }
+        }
+        return false;
+    }
+
+    public String getSandwich(String str) {
+        int begin = str.indexOf("bread");
+        int end = str.lastIndexOf("bread");
+        if (begin != end) return str.substring(begin+5, end);
+        return "";
+    }
+
+    public boolean sameStarChar(String str) {
+        for (int i = 1; i < str.length()-1; i++) {
+            if (str.charAt(i) == '*' && str.charAt(i-1) != str.charAt(i+1)) return false;
+        }
+        return true;
+    }
+
+    public String zipZap(String str) {
+        if (str.length() <= 1) return str;
+        String result = "" + str.charAt(0);
+        for (int i = 1; i < str.length()-1; i++) {
+            if (str.charAt(i-1) != 'z' || str.charAt(i+1) != 'p') result += str.charAt(i);
+        }
+        return result + str.charAt(str.length()-1);
+    }
+
+    public String starOut(String str) {
+        String result = "";
+        for (int i = 0; i < str.length(); i++) {
+            if (str.length() <= 1 && str.charAt(i) != '*') {
+                result += str.charAt(i);
+            } else {
+                if (i == 0 && str.charAt(i) != '*' && str.charAt(i+1) != '*') {
+                    result += str.charAt(i);
+                } else if (i == str.length()-1 && str.charAt(i) != '*' && str.charAt(i-1) != '*') {
+                    result += str.charAt(i);
+                } else if (i != 0 && i != str.length()-1 && str.charAt(i-1) != '*' && str.charAt(i+1) != '*' && str.charAt(i) != '*') {
+                    result += str.charAt(i);
+                }
+            }
+        }
+        return result;
+    }
+
+    public String plusOut(String str, String word) {
+        String result = "";
+        int wordLength = word.length();
+        for (int i = 0; i < str.length(); ) {
+            if (str.indexOf(word, i) == i) {
+                result += word;
+                i += wordLength;
+            } else {
+                result += '+';
+                i++;
+            }
+        }
+        return result;
+    }
+
+    public String wordEnds(String str, String word) {
+        String result = "";
+        if (word.length() == str.length()) return "";
+        for (int i = 0; i < str.length(); ) {
+            if (str.indexOf(word, i) == i) {
+                if (i == 0) {
+                    result += "" + str.charAt(i+word.length());
+                } else if (i == str.length()-word.length()) {
+                    result += "" + str.charAt(i-1);
+                    i += word.length();
+                } else {
+                    result += "" + str.charAt(i-1) + str.charAt(i+word.length());
+                    i += word.length() - 1;
+                }
+            }
+            i++;
+        }
+        return result;
+    }
+
 }
